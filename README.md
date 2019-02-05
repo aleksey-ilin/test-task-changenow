@@ -1,68 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание тестового задания
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+Основное задание делится на два этапа: первый - верстка макета под отображение на мобильном устройстве, второй - запрос и отображение данных.
+На первом этапе важен общий вид, без фанатизма, верстка проверяется только в Google Chrome в режиме совместимости с устройствами на iPhone X (нет необходимости верстать под множество экранов).
+Стек интересных нам технологий React + Redux + React Router.
+Описание логики работы экранов:
+- На первом экране отображается 3+ валют.
+- Для каждой валюты можно взять random для суммы на кошельке.
+- Общая сумма для всех кошельков должна быть отображена сверху с конвертацией в $.
+При нажатии на валюту:
+- Происходит переход на страницу с курсами (без анимаций).
+- Сверху отображается список текущих кошельков, который можно горизонтально проскролить.
+- Текущая валюта с балансом.
+- График для текущей валюты по нескольким периодам.
+- При переключении графика необходимо запросить новые данные и отобразить.
+Для графиков можно взять любую библиотеку которая будет воспроизводить результат на картинке.
+Данные для графиков, курсов валют и тп можно взять с сайта: https://min-api.cryptocompare.com/documentation
+Пример запроса: https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,BTC&tsyms=USD
+Набор иконок для макета можно взять тут: https://www.flaticon.com/
+Иконки для валют можно взять тут: https://www.npmjs.com/package/crypto-icons
+```
