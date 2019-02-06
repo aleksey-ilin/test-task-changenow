@@ -1,0 +1,46 @@
+.root {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 0;
+}
+
+.navbar {
+  height: 25px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.navbar_item {
+  height: 20px;
+  width: 20px;
+}
+
+.balance {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.balance_title,
+.balance_dollars,
+.balance_changes,
+.balance_item {
+  margin: 0;
+}
+
+.balance_title {
+  color: grey;
+}
+
+.balance_dollars {
+  font-size: 30px;
+  padding-bottom: 15px;
+}
+.balance_changes {
+  color: #0cda88;
+}

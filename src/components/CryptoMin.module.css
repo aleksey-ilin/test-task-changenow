@@ -1,0 +1,53 @@
+.root {
+  height: 50px;
+  width: 200px;
+  display: flex;
+  background-color: #40424e;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.icon,
+.short_name,
+.fullname {
+  margin: 0;
+}
+
+.short_name,
+.fullname {
+  text-align: left;
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+  margin-right: 8px;
+}
+
+.fullname,
+.amount_profit {
+  color: grey;
+  font-size: 12px;
+}
+
+.amount {
+  text-align: right;
+  margin: 0;
+  padding-right: 10px;
+}
+
+.amount_crypto,
+.amount_dollars,
+.amount_profit {
+  margin: 0;
+}

@@ -1,0 +1,85 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 0;
+}
+
+.navbar {
+  width: 90%;
+  height: 25px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.navbar_item {
+  height: 30px;
+  width: 30px;
+}
+
+.crypto_list {
+  display: flex;
+  margin: auto;
+  margin-left: 20px;
+  width: 355px;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+}
+
+.currentCurrency {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 90%;
+  color: #fff;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.icon,
+.short_name,
+.fullname {
+  margin: 0;
+}
+
+.short_name,
+.fullname {
+  text-align: left;
+}
+
+.short_name,
+.amount_crypto {
+  font-size: 20px;
+}
+
+.icon {
+  height: 35px;
+  width: 35px;
+  margin-right: 8px;
+}
+
+.fullname,
+.amount_profit {
+  color: grey;
+  font-size: 14px;
+}
+
+.amount {
+  text-align: right;
+  margin: 0;
+  padding-right: 10px;
+}
+
+.amount_crypto,
+.amount_dollars,
+.amount_profit {
+  margin: 0;
+}
