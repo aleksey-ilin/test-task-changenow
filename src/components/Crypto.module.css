@@ -64,10 +64,19 @@
 .buttom_price_dollars,
 .buttom_price_description,
 .buttom_profit_percents,
-.buttom_profit_description {
+.buttom_profit_description,
+.buttom_loss_percents {
   margin: 0;
 }
 
 .buttom_price {
   text-align: left;
+}
+
+.buttom_profit_percents {
+  color: #0cda88;
+}
+
+.buttom_loss_percents {
+  color: #ff7976;
 }

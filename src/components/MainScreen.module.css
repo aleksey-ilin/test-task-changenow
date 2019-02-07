@@ -28,7 +28,8 @@
 
 .balance_title,
 .balance_dollars,
-.balance_changes,
+.balance_changes_profit,
+.balance_changes_loss,
 .balance_item {
   margin: 0;
 }
@@ -41,6 +42,11 @@
   font-size: 30px;
   padding-bottom: 15px;
 }
-.balance_changes {
+
+.balance_changes_profit {
   color: #0cda88;
+}
+
+.balance_changes_loss {
+  color: #ff7976;
 }

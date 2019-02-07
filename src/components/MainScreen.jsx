@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MainScreen.module.css';
-import Crypto from './Crypto';
+import Crypto from '../containers/Crypto';
 import alarm from '../icons/alarm.png';
 import search from '../icons/search.png';
 
@@ -11,9 +11,7 @@ export default class MainScreen extends React.Component {
   // handleChangePage = (event, page) => this.props.changeCurrentPage(page);
 
   render() {
-    // eslint-disable-next-line no-empty-pattern
-    const {} = this.props;
-
+    const { totalBalance, totalChangeLast24h } = this.props;
     return (
       <div className={styles.root}>
         <nav className={styles.navbar}>
@@ -22,9 +20,13 @@ export default class MainScreen extends React.Component {
         </nav>
         <div className={styles.balance}>
           <p className={styles.balance_title}>Your total balance</p>
-          <p className={styles.balance_dollars}>$1,632.95</p>
+          <p className={styles.balance_dollars}>$ {totalBalance}</p>
           <p className={styles.balance_title}>24h Changes</p>
-          <p className={styles.balance_changes}>+$37.55 &uarr;</p>
+          {totalChangeLast24h > 0
+            ? <p className={styles.balance_changes_profit}>+${totalChangeLast24h} &uarr;</p>
+            : <p className={styles.balance_changes_loss}>
+                -${Math.abs(totalChangeLast24h)} &darr;
+              </p>}
         </div>
         <Crypto />
       </div>
@@ -33,5 +35,6 @@ export default class MainScreen extends React.Component {
 }
 
 MainScreen.propTypes = {
-  events: PropTypes.array,
+  totalBalance: PropTypes.string,
+  totalChangeLast24h: PropTypes.number,
 };

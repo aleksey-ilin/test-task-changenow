@@ -1,47 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Crypto.module.css';
-import btc from '../icons/btc.png';
 
 export default class Crypto extends React.Component {
-  state = { rowsPerPage: 10, rowsHeight: 80 };
-
-  // handleChangePage = (event, page) => this.props.changeCurrentPage(page);
-
-  render() {
-    // eslint-disable-next-line no-empty-pattern
-    const {} = this.props;
-
+  renderCrypto() {
+    const { currencies } = this.props;
     return (
-      <div className={styles.root}>
+      Object.keys(currencies).map(currency => (
+      <div key={currencies[currency].id} className={styles.root}>
         <div className={styles.top}>
           <div className={styles.top_name}>
-            <img className={styles.top_icon} src={btc} alt=""/>
+            <img className={styles.top_icon} src={currencies[currency].icon} alt=""/>
             <div>
-              <p className={styles.top_short_name}>BTC</p>
-              <p className={styles.top_fullname}>Bitcoin</p>
+              <p className={styles.top_short_name}>{currencies[currency].shortName}</p>
+              <p className={styles.top_fullname}>{currencies[currency].fullName}</p>
             </div>
           </div>
           <div className={styles.top_amount}>
-            <p className={styles.top_amount_crypto}>0.241234523</p>
-            <p className={styles.top_amount_dollars}>$1,238.62</p>
+            <p className={styles.top_amount_crypto}>{currencies[currency].amountCrypto}</p>
+            <p className={styles.top_amount_dollars}>$ {currencies[currency].amountDollars}</p>
           </div>
         </div>
         <div className={styles.buttom}>
           <div className={styles.buttom_price}>
-            <p className={styles.buttom_price_dollars}>$6,752.54</p>
+            <p className={styles.buttom_price_dollars}>{currencies[currency].priceDisplay}</p>
             <p className={styles.buttom_price_description}>Price</p>
           </div>
           <div className={styles.buttom_profit}>
-            <p className={styles.buttom_profit_percents}>+2.75%</p>
+            {currencies[currency].changePtc24hDisplay > 0
+              ? <p className={styles.buttom_profit_percents}>
+                  +{currencies[currency].changePtc24hDisplay}%
+                </p>
+              : <p className={styles.buttom_loss_percents}>
+                {currencies[currency].changePtc24hDisplay}%
+                </p>
+            }
             <p className={styles.buttom_profit_description}>Profit / Loss</p>
           </div>
         </div>
       </div>
+      ))
     );
+  }
+
+  render() {
+    const { currencies } = this.props;
+    return currencies.BTC ? this.renderCrypto() : null;
   }
 }
 
 Crypto.propTypes = {
-  events: PropTypes.array,
+  currencies: PropTypes.object,
 };

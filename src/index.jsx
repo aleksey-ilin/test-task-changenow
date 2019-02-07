@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import './index.css';
 import App from './components/App';
+import { fetchPrices, addTotalBalanceToState } from './actions';
 
 /* eslint-disable no-underscore-dangle */
 // eslint-disable-next-line no-undef
@@ -18,6 +19,9 @@ const store = createStore(
     applyMiddleware(thunk),
   ),
 );
+
+store.dispatch(addTotalBalanceToState());
+store.dispatch(fetchPrices());
 
 render(
   <Provider store={store}>

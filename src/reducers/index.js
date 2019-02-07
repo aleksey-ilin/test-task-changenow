@@ -3,27 +3,39 @@ import { handleActions } from 'redux-actions';
 
 import * as actions from '../actions';
 
-const solutionState = handleActions({
-  [actions.init]: (state, { payload }) => {
-    const { userFinishedLesson } = payload;
-    const lessonFinished = !!userFinishedLesson;
-    return { canBeShown: lessonFinished, shown: lessonFinished };
+const eventsPricesState = handleActions({
+  [actions.fetchPricesRequest]() {
+    return 'requested';
   },
-  [actions.showSolution]: (state) => {
-    const newState = { ...state, shown: true };
-    return newState;
+  [actions.fetchPricesFailure]() {
+    return 'failed';
   },
-  [actions.makeSolutionAvailable]: (state) => {
-    const newState = { ...state, canBeShown: true };
-    return newState;
+  [actions.fetchPricesSuccess]() {
+    return 'successed';
   },
-  [actions.runCheckSuccess]: (state, { payload }) => {
-    const { check: { data: { attributes } } } = payload;
-    const newState = attributes.passed ? { canBeShown: true, shown: true } : { ...state };
-    return newState;
+}, 'none');
+
+const currencies = handleActions({
+  [actions.fetchPricesSuccess](state, { payload }) {
+    return { ...state, ...payload };
   },
-}, { canBeShown: false, shown: false });
+}, {});
+
+const totalBalance = handleActions({
+  [actions.addTotalBalance](state, { payload }) {
+    return payload;
+  },
+}, 0);
+
+const totalChangeLast24h = handleActions({
+  [actions.addTotalChange24h](state, { payload }) {
+    return payload;
+  },
+}, 0);
 
 export default combineReducers({
-  solutionState,
+  eventsPricesState,
+  currencies,
+  totalBalance,
+  totalChangeLast24h,
 });
