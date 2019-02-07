@@ -20,7 +20,7 @@ export default class MainScreen extends React.Component {
         </nav>
         <div className={styles.balance}>
           <p className={styles.balance_title}>Your total balance</p>
-          <p className={styles.balance_dollars}>$ {totalBalance}</p>
+          <p className={styles.balance_dollars}>$ {new Intl.NumberFormat().format(totalBalance)}</p>
           <p className={styles.balance_title}>24h Changes</p>
           {totalChangeLast24h > 0
             ? <p className={styles.balance_changes_profit}>+${totalChangeLast24h} &uarr;</p>
@@ -35,6 +35,6 @@ export default class MainScreen extends React.Component {
 }
 
 MainScreen.propTypes = {
-  totalBalance: PropTypes.string,
+  totalBalance: PropTypes.number,
   totalChangeLast24h: PropTypes.number,
 };

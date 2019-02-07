@@ -18,8 +18,7 @@ const amountDollarsETH = _.random(0, 1000);
 const amountDollarsXRP = _.random(0, 1000);
 const totalBalance = amountDollarsBTC + amountDollarsETH + amountDollarsXRP;
 
-export const addTotalBalanceToState = () => dispatch => (
-  dispatch(addTotalBalance(new Intl.NumberFormat().format(totalBalance))));
+export const addTotalBalanceToState = () => dispatch => dispatch(addTotalBalance(totalBalance));
 
 export const addTotalChange24hToState = currencies => (dispatch) => {
   const result = Object.keys(currencies)

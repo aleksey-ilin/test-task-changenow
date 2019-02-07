@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './CryptoRate.module.css';
 import CryptoMin from './CryptoMin';
 import leftArrow from '../icons/left-arrow.png';
@@ -17,7 +18,9 @@ export default class MainScreen extends React.Component {
     return (
       <div className={styles.root}>
         <nav className={styles.navbar}>
-          <img className={styles.navbar_item} src={leftArrow} alt=""/>
+          <Link to='/'>
+            <img className={styles.navbar_item} src={leftArrow} alt=""/>
+          </Link>
         </nav>
         <div className={styles.crypto_list}>
           <CryptoMin />
