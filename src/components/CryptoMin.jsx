@@ -31,9 +31,7 @@ export default class Crypto extends React.Component {
     );
   }
 
-  render() {
-    return this.props.currencies.BTC ? this.renderCryptoMin() : null;
-  }
+  render = () => (this.props.currencies.BTC ? this.renderCryptoMin() : null);
 }
 
 Crypto.propTypes = {
