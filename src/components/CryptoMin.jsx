@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './CryptoMin.module.css';
 
 export default class Crypto extends React.Component {
+  handleChangeActiveCurrency = nameCurrency => () => this.props.changeActiveCurrency(nameCurrency)
+
   renderCryptoMin() {
     const { currencies, activeCurrency } = this.props;
     return (
@@ -11,7 +13,9 @@ export default class Crypto extends React.Component {
           className={currencies[currency].shortName === activeCurrency
             ? styles.root_active
             : styles.root}
-          key={currencies[currency].id}>
+          key={currencies[currency].id}
+          onClick={this.handleChangeActiveCurrency(currencies[currency].shortName)}
+          >
           <div className={styles.name}>
             <img className={styles.icon} src={currencies[currency].icon} alt=""/>
             <div>
@@ -41,4 +45,5 @@ export default class Crypto extends React.Component {
 Crypto.propTypes = {
   currencies: PropTypes.object,
   activeCurrency: PropTypes.string,
+  changeActiveCurrency: PropTypes.func,
 };

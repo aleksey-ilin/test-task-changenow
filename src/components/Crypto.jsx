@@ -13,8 +13,8 @@ export default class Crypto extends React.Component {
         <Link to='/rate' key={currencies[currency].id} className={styles.link}>
           <div
             className={styles.root}
-            onClick={this.handleChangeActiveCurrency(currencies[currency].shortName)
-          }>
+            onClick={this.handleChangeActiveCurrency(currencies[currency].shortName)}
+          >
             <div className={styles.top}>
               <div className={styles.top_name}>
                 <img className={styles.top_icon} src={currencies[currency].icon} alt=""/>
