@@ -35,9 +35,13 @@
 }
 
 .fullname,
-.amount_profit {
-  color: grey;
+.amount_percents_profit,
+.amount_percents_loss {
   font-size: 12px;
+}
+
+.fullname {
+  color: grey;
 }
 
 .amount {
@@ -48,6 +52,15 @@
 
 .amount_crypto,
 .amount_dollars,
-.amount_profit {
+.amount_percents_profit,
+.amount_percents_loss {
   margin: 0;
+}
+
+.amount_percents_profit {
+  color: #0cda88;
+}
+
+.amount_percents_loss {
+  color: #ff7976;
 }

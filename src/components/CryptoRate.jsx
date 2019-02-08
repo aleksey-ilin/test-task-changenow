@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './CryptoRate.module.css';
-import CryptoMin from './CryptoMin';
+import CryptoMin from '../containers/CryptoMin';
 import leftArrow from '../icons/left-arrow.png';
 import btc from '../icons/btc.png';
 
 export default class MainScreen extends React.Component {
-  state = { rowsPerPage: 10, rowsHeight: 80 };
-
-  // handleChangePage = (event, page) => this.props.changeCurrentPage(page);
-
   render() {
     // eslint-disable-next-line no-empty-pattern
     const {} = this.props;
@@ -23,8 +19,6 @@ export default class MainScreen extends React.Component {
           </Link>
         </nav>
         <div className={styles.crypto_list}>
-          <CryptoMin />
-          <CryptoMin />
           <CryptoMin />
         </div>
         <div className={styles.currentCurrency}>
