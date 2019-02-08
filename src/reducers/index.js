@@ -33,9 +33,16 @@ const totalChangeLast24h = handleActions({
   },
 }, 0);
 
+const activeCurrency = handleActions({
+  [actions.changeActiveCurrency](state, { payload }) {
+    return payload;
+  },
+}, 'BTC');
+
 export default combineReducers({
   eventsPricesState,
   currencies,
   totalBalance,
   totalChangeLast24h,
+  activeCurrency,
 });

@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 import styles from './Crypto.module.css';
 
 export default class Crypto extends React.Component {
+  handleChangeActiveCurrency = nameCurrency => () => this.props.changeActiveCurrency(nameCurrency)
+
   renderCrypto() {
     const { currencies } = this.props;
     return (
       Object.keys(currencies).map(currency => (
         <Link to='/rate' key={currencies[currency].id} className={styles.link}>
-          <div className={styles.root}>
+          <div
+            className={styles.root}
+            onClick={this.handleChangeActiveCurrency(currencies[currency].shortName)
+          }>
             <div className={styles.top}>
               <div className={styles.top_name}>
                 <img className={styles.top_icon} src={currencies[currency].icon} alt=""/>
@@ -47,11 +52,11 @@ export default class Crypto extends React.Component {
   }
 
   render() {
-    const { currencies } = this.props;
-    return currencies.BTC ? this.renderCrypto() : null;
+    return this.props.currencies.BTC ? this.renderCrypto() : null;
   }
 }
 
 Crypto.propTypes = {
   currencies: PropTypes.object,
+  changeActiveCurrency: PropTypes.func,
 };

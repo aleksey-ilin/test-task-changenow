@@ -1,5 +1,4 @@
 import { createAction } from 'redux-actions';
-// import Routes from 'routes';
 import axios from 'axios';
 import _ from 'lodash';
 import btc from '../icons/btc.png';
@@ -12,6 +11,7 @@ export const fetchPricesFailure = createAction('PRICES_FETCH_FAILURE');
 
 export const addTotalBalance = createAction('BALANCE_TOTAL_ADD');
 export const addTotalChange24h = createAction('CHANGE24H_TOTAL_ADD');
+export const changeActiveCurrency = createAction('CURRENCY_ACTIVE_CHANGE');
 
 const amountDollarsBTC = _.random(0, 1000);
 const amountDollarsETH = _.random(0, 1000);
@@ -23,7 +23,7 @@ export const addTotalBalanceToState = () => dispatch => dispatch(addTotalBalance
 export const addTotalChange24hToState = currencies => (dispatch) => {
   const result = Object.keys(currencies)
     .reduce((acc, currency) => (
-      acc + currencies[currency].amountDollars * currencies[currency].changePtc24hRaw
+      acc + currencies[currency].amountDollars * (currencies[currency].changePtc24hRaw / 100)
     ), 0);
   return dispatch(addTotalChange24h(_.round(result, 2)));
 };
@@ -94,7 +94,6 @@ export const fetchPrices = () => async (dispatch) => {
           icon: data[currency].icon,
         },
       }), {});
-    // console.log(result);
 
     dispatch(addTotalChange24hToState(result));
     dispatch(fetchPricesSuccess(result));

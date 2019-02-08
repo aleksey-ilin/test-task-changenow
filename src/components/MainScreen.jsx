@@ -6,10 +6,6 @@ import alarm from '../icons/alarm.png';
 import search from '../icons/search.png';
 
 export default class MainScreen extends React.Component {
-  state = { rowsPerPage: 10, rowsHeight: 80 };
-
-  // handleChangePage = (event, page) => this.props.changeCurrentPage(page);
-
   render() {
     const { totalBalance, totalChangeLast24h } = this.props;
     return (
