@@ -5,8 +5,18 @@ import styles from './Crypto.module.css';
 
 export default class Crypto extends React.Component {
   handleChangeActiveCurrency = nameCurrency => () => {
-    this.props.fetchHistoricalData(nameCurrency);
-    this.props.changeActiveCurrency(nameCurrency);
+    const {
+      fetchHistoricalData,
+      changeActiveCurrency,
+      activeCurrency,
+      activePeriod,
+      changeActivePeriod,
+    } = this.props;
+    if (nameCurrency !== activeCurrency || activePeriod !== 'day') {
+      fetchHistoricalData(nameCurrency, 'day');
+      changeActiveCurrency(nameCurrency);
+      changeActivePeriod('day');
+    }
   };
 
   renderCrypto() {
@@ -61,4 +71,7 @@ Crypto.propTypes = {
   currencies: PropTypes.object,
   changeActiveCurrency: PropTypes.func,
   fetchHistoricalData: PropTypes.func,
+  activeCurrency: PropTypes.string,
+  activePeriod: PropTypes.string,
+  changeActivePeriod: PropTypes.func,
 };

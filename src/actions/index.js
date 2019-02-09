@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import _ from 'lodash';
 import { data, totalBalance } from '../currencies';
-import { getFormattedResponse } from '../utils';
+import { getFormattedResponse, mapping } from '../utils';
 
 export const fetchPricesRequest = createAction('PRICES_FETCH_REQUEST');
 export const fetchPricesSuccess = createAction('PRICES_FETCH_SUCCESS');
@@ -27,15 +27,12 @@ export const addTotalChange24hToState = currencies => (dispatch) => {
   return dispatch(addTotalChange24h(_.round(result, 2)));
 };
 
-export const fetchHistoricalData = currency => async (dispatch) => {
-  // console.log(currency);
+export const fetchHistoricalData = (currency, period) => async (dispatch) => {
   dispatch(fetchHistoricalDataRequest());
   try {
-    const url = `https://min-api.cryptocompare.com/data/histohour?fsym=${currency}&tsym=USD&limit=24`;
+    const url = mapping.url[period](currency);
     const response = await axios.get(url);
-    const result = response.data.Data
-      .map(item => ({ time: `${new Date(item.time * 1000).getHours()}h`, open: item.open }));
-    // console.log(result);
+    const result = mapping.formattedResponse[period](response.data.Data);
     dispatch(fetchHistoricalDataSuccess(result));
   } catch (e) {
     console.log(e);
@@ -48,10 +45,8 @@ export const fetchPrices = () => async (dispatch) => {
   try {
     const url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP&tsyms=USD';
     const response = await axios.get(url);
-
     const formattedDataRaw = getFormattedResponse(response.data.RAW, 'Raw');
     const formattedDataDisplay = getFormattedResponse(response.data.DISPLAY, 'Display');
-
     const result = Object.keys(response.data.RAW)
       .reduce((acc, currency) => ({
         ...acc,

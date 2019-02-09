@@ -1,17 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from 'recharts';
 import styles from './Chart.module.css';
 
 export default class Chart extends React.Component {
   handleChangeActivePeriod = namePeriod => () => {
-    console.log(namePeriod);
-    this.props.changeActivePeriod(namePeriod);
+    const {
+      changeActivePeriod,
+      fetchHistoricalData,
+      activeCurrency,
+      activePeriod,
+    } = this.props;
+    if (namePeriod !== activePeriod) {
+      changeActivePeriod(namePeriod);
+      fetchHistoricalData(activeCurrency, namePeriod);
+    }
   };
 
   renderChart() {
     const { historicalData, activePeriod } = this.props;
-    console.log(activePeriod);
     return (
       <>
         <div className={styles.periods}>
@@ -37,4 +51,6 @@ Chart.propTypes = {
   historicalData: PropTypes.array,
   activePeriod: PropTypes.string,
   changeActivePeriod: PropTypes.func,
+  fetchHistoricalData: PropTypes.func,
+  activeCurrency: PropTypes.string,
 };

@@ -22,7 +22,7 @@ const store = createStore(
 
 store.dispatch(addTotalBalanceToState());
 store.dispatch(fetchPrices());
-store.dispatch(fetchHistoricalData('BTC'));
+store.dispatch(fetchHistoricalData('BTC', 'day'));
 
 render(
   <Provider store={store}>

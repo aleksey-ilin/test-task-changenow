@@ -4,8 +4,16 @@ import styles from './CryptoMin.module.css';
 
 export default class Crypto extends React.Component {
   handleChangeActiveCurrency = nameCurrency => () => {
-    this.props.fetchHistoricalData(nameCurrency);
-    this.props.changeActiveCurrency(nameCurrency);
+    const {
+      fetchHistoricalData,
+      activePeriod,
+      changeActiveCurrency,
+      activeCurrency,
+    } = this.props;
+    if (nameCurrency !== activeCurrency) {
+      fetchHistoricalData(nameCurrency, activePeriod);
+      changeActiveCurrency(nameCurrency);
+    }
   };
 
   renderCryptoMin() {
@@ -50,4 +58,5 @@ Crypto.propTypes = {
   activeCurrency: PropTypes.string,
   changeActiveCurrency: PropTypes.func,
   fetchHistoricalData: PropTypes.func,
+  activePeriod: PropTypes.string,
 };

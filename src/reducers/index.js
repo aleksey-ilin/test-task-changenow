@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 
 import * as actions from '../actions';
 
-const PricesState = handleActions({
+const pricesState = handleActions({
   [actions.fetchPricesRequest]() {
     return 'requested';
   },
@@ -11,6 +11,18 @@ const PricesState = handleActions({
     return 'failed';
   },
   [actions.fetchPricesSuccess]() {
+    return 'successed';
+  },
+}, 'none');
+
+const historicalDataState = handleActions({
+  [actions.fetchHistoricalDataRequest]() {
+    return 'requested';
+  },
+  [actions.fetchHistoricalDataFailure]() {
+    return 'failed';
+  },
+  [actions.fetchHistoricalDataSuccess]() {
     return 'successed';
   },
 }, 'none');
@@ -52,7 +64,8 @@ const activePeriod = handleActions({
 }, 'day');
 
 export default combineReducers({
-  PricesState,
+  pricesState,
+  historicalDataState,
   currencies,
   totalBalance,
   totalChangeLast24h,
