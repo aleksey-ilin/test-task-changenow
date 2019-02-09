@@ -8,6 +8,10 @@ export const fetchPricesRequest = createAction('PRICES_FETCH_REQUEST');
 export const fetchPricesSuccess = createAction('PRICES_FETCH_SUCCESS');
 export const fetchPricesFailure = createAction('PRICES_FETCH_FAILURE');
 
+export const fetchHistoricalDataRequest = createAction('HISTORICALDATA_FETCH_REQUEST');
+export const fetchHistoricalDataSuccess = createAction('HISTORICALDATA_FETCH_SUCCESS');
+export const fetchHistoricalDataFailure = createAction('PHISTORICALDATA_FETCH_FAILURE');
+
 export const addTotalBalance = createAction('BALANCE_TOTAL_ADD');
 export const addTotalChange24h = createAction('CHANGE24H_TOTAL_ADD');
 export const changeActiveCurrency = createAction('CURRENCY_ACTIVE_CHANGE');
@@ -20,6 +24,22 @@ export const addTotalChange24hToState = currencies => (dispatch) => {
       acc + currencies[currency].amountDollars * (currencies[currency].changePtc24hRaw / 100)
     ), 0);
   return dispatch(addTotalChange24h(_.round(result, 2)));
+};
+
+export const fetchHistoricalData = currency => async (dispatch) => {
+  // console.log(currency);
+  dispatch(fetchHistoricalDataRequest());
+  try {
+    const url = `https://min-api.cryptocompare.com/data/histohour?fsym=${currency}&tsym=USD&limit=24`;
+    const response = await axios.get(url);
+    const result = response.data.Data
+      .map(item => ({ time: `${new Date(item.time * 1000).getHours()}h`, open: item.open }));
+    // console.log(result);
+    dispatch(fetchHistoricalDataSuccess(result));
+  } catch (e) {
+    console.log(e);
+    dispatch(fetchHistoricalDataFailure());
+  }
 };
 
 export const fetchPrices = () => async (dispatch) => {

@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 
 import * as actions from '../actions';
 
-const eventsPricesState = handleActions({
+const PricesState = handleActions({
   [actions.fetchPricesRequest]() {
     return 'requested';
   },
@@ -39,10 +39,17 @@ const activeCurrency = handleActions({
   },
 }, 'BTC');
 
+const historicalData = handleActions({
+  [actions.fetchHistoricalDataSuccess](state, { payload }) {
+    return payload;
+  },
+}, []);
+
 export default combineReducers({
-  eventsPricesState,
+  PricesState,
   currencies,
   totalBalance,
   totalChangeLast24h,
   activeCurrency,
+  historicalData,
 });

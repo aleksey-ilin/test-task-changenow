@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import './index.css';
 import App from './components/App';
-import { fetchPrices, addTotalBalanceToState } from './actions';
+import { fetchPrices, addTotalBalanceToState, fetchHistoricalData } from './actions';
 
 /* eslint-disable no-underscore-dangle */
 // eslint-disable-next-line no-undef
@@ -22,6 +22,7 @@ const store = createStore(
 
 store.dispatch(addTotalBalanceToState());
 store.dispatch(fetchPrices());
+store.dispatch(fetchHistoricalData('BTC'));
 
 render(
   <Provider store={store}>

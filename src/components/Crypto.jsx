@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import styles from './Crypto.module.css';
 
 export default class Crypto extends React.Component {
-  handleChangeActiveCurrency = nameCurrency => () => this.props.changeActiveCurrency(nameCurrency)
+  handleChangeActiveCurrency = nameCurrency => () => {
+    this.props.fetchHistoricalData(nameCurrency);
+    this.props.changeActiveCurrency(nameCurrency);
+  };
 
   renderCrypto() {
     const { currencies } = this.props;
@@ -57,4 +60,5 @@ export default class Crypto extends React.Component {
 Crypto.propTypes = {
   currencies: PropTypes.object,
   changeActiveCurrency: PropTypes.func,
+  fetchHistoricalData: PropTypes.func,
 };
