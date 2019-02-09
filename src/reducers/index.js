@@ -45,6 +45,12 @@ const historicalData = handleActions({
   },
 }, []);
 
+const activePeriod = handleActions({
+  [actions.changeActivePeriod](state, { payload }) {
+    return payload;
+  },
+}, 'day');
+
 export default combineReducers({
   PricesState,
   currencies,
@@ -52,4 +58,5 @@ export default combineReducers({
   totalChangeLast24h,
   activeCurrency,
   historicalData,
+  activePeriod,
 });

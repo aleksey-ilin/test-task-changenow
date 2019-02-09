@@ -13,6 +13,7 @@
 
 .root {
   border: 1px solid #494b57;
+  box-sizing: border-box;
 }
 
 .root_active {

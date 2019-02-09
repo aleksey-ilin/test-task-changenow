@@ -15,6 +15,7 @@ export const fetchHistoricalDataFailure = createAction('PHISTORICALDATA_FETCH_FA
 export const addTotalBalance = createAction('BALANCE_TOTAL_ADD');
 export const addTotalChange24h = createAction('CHANGE24H_TOTAL_ADD');
 export const changeActiveCurrency = createAction('CURRENCY_ACTIVE_CHANGE');
+export const changeActivePeriod = createAction('PERIOD_ACTIVE_CHANGE');
 
 export const addTotalBalanceToState = () => dispatch => dispatch(addTotalBalance(totalBalance));
 
