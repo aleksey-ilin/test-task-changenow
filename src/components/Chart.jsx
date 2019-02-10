@@ -38,7 +38,7 @@ export default class Chart extends React.Component {
           <XAxis dataKey="time" stroke='#fff' tick={{ fontSize: '10px' }}/>
           <YAxis domain={['auto', 'auto']} stroke='#fff' tick={{ fontSize: '10px' }} tickCount={10} axisLine={false}/>
           <Tooltip/>
-          <Area type='monotone' dataKey='open' stroke='#9f72ff' fill='#37334c' />
+          <Area type='monotone' dataKey='price' stroke='#9f72ff' fill='#37334c' />
         </AreaChart>
       </>
     );
