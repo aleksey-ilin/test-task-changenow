@@ -3,7 +3,14 @@ import Component from '../components/Chart';
 import * as actionCreators from '../actions';
 
 const Container = connect(
-  state => state,
+  (state) => {
+    const props = {
+      historicalData: state.historicalData,
+      activePeriod: state.activePeriod,
+      activeCurrency: state.activeCurrency,
+    };
+    return props;
+  },
   actionCreators,
 )(Component);
 
