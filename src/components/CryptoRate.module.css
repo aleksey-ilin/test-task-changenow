@@ -47,7 +47,11 @@
 
 .icon,
 .short_name,
-.fullname {
+.fullname,
+.amount_crypto,
+.amount_dollars,
+.amount_profit,
+.amount_loss {
   margin: 0;
 }
 
@@ -81,13 +85,6 @@
   text-align: right;
   margin: 0;
   padding-right: 10px;
-}
-
-.amount_crypto,
-.amount_dollars,
-.amount_profit,
-.amount_loss {
-  margin: 0;
 }
 
 .amount_profit {

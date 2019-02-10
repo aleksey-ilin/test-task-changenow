@@ -35,12 +35,20 @@
 
 .top_icon,
 .top_short_name,
-.top_fullname {
+.top_fullname,
+.top_amount_crypto,
+.top_amount_dollars,
+.buttom_price_dollars,
+.buttom_price_description,
+.buttom_profit_percents,
+.buttom_profit_description,
+.buttom_loss_percents {
   margin: 0;
 }
 
 .top_short_name,
-.top_fullname {
+.top_fullname,
+.buttom_price {
   text-align: left;
 }
 
@@ -61,20 +69,6 @@
 .top_amount,
 .buttom_profit {
   text-align: right;
-}
-
-.top_amount_crypto,
-.top_amount_dollars,
-.buttom_price_dollars,
-.buttom_price_description,
-.buttom_profit_percents,
-.buttom_profit_description,
-.buttom_loss_percents {
-  margin: 0;
-}
-
-.buttom_price {
-  text-align: left;
 }
 
 .buttom_profit_percents {
